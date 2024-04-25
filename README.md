@@ -224,6 +224,8 @@ Explanation:
 # Project-explanation
 You can find the project code in index.html
 
+Our project is a simple webpage that fetches the bitcoin spot price from the coinbase api every three seconds and shows/updates it on the webpage
+
 ## API calls:
 
 - An API (Application Programming Interface) is a way for different software systems to communicate with each other.
