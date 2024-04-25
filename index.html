@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bitcoin Price</title>
+  <script>
+    // Function to fetch current Bitcoin price from the Coinbase API
+    function fetchBitcoinPrice() {
+      // Create a new XMLHttpRequest object to make an API request
+      const xhr = new XMLHttpRequest();
+
+      // Set the API endpoint URL
+      const apiUrl = 'https://api.coinbase.com/v2/prices/BTC-USD/spot';
+
+      // Open a GET request to the API endpoint
+      xhr.open('GET', apiUrl);
+
+      // Set the response type to JSON
+      xhr.responseType = 'json';
+
+      // Function to handle the response from the API
+      xhr.onload = function () {
+        // Check if the request was successful (status code 200)
+        if (xhr.status === 200) {
+          // Get the response data
+          const response = xhr.response;
+
+          // Extract the current Bitcoin price from the response
+          const bitcoinPrice = response.data.amount;
+
+          // Display the Bitcoin price on the webpage
+          document.getElementById('price').textContent = '$' + bitcoinPrice;
+        }
+      };
+
+      // Send the request to the API
+      xhr.send();
+    }
+
+    // Call the fetchBitcoinPrice function every 3 seconds
+    setInterval(fetchBitcoinPrice, 3000);
+  </script>
+</head>
+
+<body>
+  <h1>Current Bitcoin Price</h1>
+  <p>The current price of Bitcoin is: <span id="price"></span></p>
+</body>
+
+</html>
