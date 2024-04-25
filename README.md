@@ -1,4 +1,9 @@
 # JavaScript Tutorial
+### Table of Contents:
+- [Learn the JavaScript Syntax](#JavaScript-Syntax)
+- [Build and understand our simple Bitcoin Price webpage project](#Project-explanation)
+
+# JavaScript-Syntax
 
 ## Variable Declaration
 
@@ -216,7 +221,8 @@ Explanation:
 - The try/catch block is used to handle any errors that may occur during the asynchronous operation.
 
 
-# Project explanation for beginners
+# Project-explanation
+You can find the project code in index.html
 
 ## API calls:
 
