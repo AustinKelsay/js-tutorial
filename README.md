@@ -245,13 +245,104 @@ We use the XMLHttpRequest object in JavaScript to send a request to the API endp
 ## Step-by-step explanation of the code:
 
 - We define a function called fetchBitcoinPrice to fetch the current Bitcoin price from the Coinbase API.
+```javascript
+    function fetchBitcoinPrice() {
+      // ...
+    }
+```
 - Inside the function, we create a new XMLHttpRequest object to make the API request.
+```javascript
+    const xhr = new XMLHttpRequest();
+```
 - We set the API endpoint URL to https://api.coinbase.com/v2/prices/BTC-USD/spot, which returns the current Bitcoin price in USD.
+```javascript
+    const apiUrl = 'https://api.coinbase.com/v2/prices/BTC-USD/spot';
+```
 - We open a GET request to the API endpoint using xhr.open('GET', apiUrl).
+```javascript
+    xhr.open('GET', apiUrl);
+```
 - We set the response type to JSON using xhr.responseType = 'json' to indicate that we expect the response to be in JSON format.
+```javascript
+    xhr.responseType = 'json';
+```
 - We define an onload function to handle the response from the API when the request is completed.
+```javascript
+    xhr.onload = function() {
+      // ...
+    };
+```
 - Inside the onload function, we check if the request was successful by comparing xhr.status to 200 (which indicates a successful request).
+```javascript
+    if (xhr.status === 200) {
+      // ...
+    }
+```
 - If the request is successful, we extract the current Bitcoin price from the response data using response.data.amount.
+```javascript
+    const response = xhr.response;
+    const bitcoinPrice = response.data.amount;
+```
 - We display the Bitcoin price on the webpage by setting the textContent of the element with the ID 'price'.
+```javascript
+    document.getElementById('price').textContent = '$' + bitcoinPrice;
+```
 - Finally, we send the request to the API using xhr.send().
+```javascript
+    xhr.send();
+```
 - We use setInterval(fetchBitcoinPrice, 3000) to call the fetchBitcoinPrice function every 3 seconds to continuously update the displayed Bitcoin price.
+```javascript
+    setInterval(fetchBitcoinPrice, 3000);
+```
+
+# Code:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bitcoin Price</title>
+  <script>
+    // Function to fetch the current Bitcoin price from the Coinbase API
+    function fetchBitcoinPrice() {
+      // Create a new XMLHttpRequest object to make an API request
+      const xhr = new XMLHttpRequest();
+
+      // Set the API endpoint URL
+      const apiUrl = 'https://api.coinbase.com/v2/prices/BTC-USD/spot';
+
+      // Open a GET request to the API endpoint
+      xhr.open('GET', apiUrl);
+
+      // Set the response type to JSON
+      xhr.responseType = 'json';
+
+      // Function to handle the response from the API
+      xhr.onload = function() {
+        // Check if the request was successful (status code 200)
+        if (xhr.status === 200) {
+          // Get the response data
+          const response = xhr.response;
+
+          // Extract the current Bitcoin price from the response
+          const bitcoinPrice = response.data.amount;
+
+          // Display the Bitcoin price on the webpage
+          document.getElementById('price').textContent = '$' + bitcoinPrice;
+        }
+      };
+
+      // Send the request to the API
+      xhr.send();
+    }
+
+    // Call the fetchBitcoinPrice function every 3 seconds
+    setInterval(fetchBitcoinPrice, 3000);
+  </script>
+</head>
+<body>
+  <h1>Current Bitcoin Price</h1>
+  <p>The current price of Bitcoin is: <span id="price"></span></p>
+</body>
+</html>
+```
