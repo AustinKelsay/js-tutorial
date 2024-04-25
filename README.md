@@ -214,3 +214,36 @@ Explanation:
 - The async keyword is used to define an asynchronous function.
 - Inside an async function, you can use the await keyword to pause the execution until a promise is resolved.
 - The try/catch block is used to handle any errors that may occur during the asynchronous operation.
+
+
+# Project explanation for beginners
+
+## API calls:
+
+- An API (Application Programming Interface) is a way for different software systems to communicate with each other.
+- In this example, we are making an API call to the Coinbase API to fetch the current Bitcoin price.
+We use the XMLHttpRequest object in JavaScript to send a request to the API endpoint (URL) and receive the response.
+
+
+## Basic JavaScript syntax:
+
+- const is used to declare a constant variable that cannot be reassigned.
+- function is used to define a function, which is a reusable block of code that performs a specific task.
+- if is a conditional statement that checks if a condition is true and executes the code inside the block if it is.
+- document.getElementById('price') is used to select an HTML element with the ID 'price' and manipulate its content.
+- setInterval(fetchBitcoinPrice, 3000) is used to call the fetchBitcoinPrice function every 3000 milliseconds (3 seconds) to continuously update the displayed Bitcoin price.
+
+
+## Step-by-step explanation of the code:
+
+- We define a function called fetchBitcoinPrice to fetch the current Bitcoin price from the Coinbase API.
+- Inside the function, we create a new XMLHttpRequest object to make the API request.
+- We set the API endpoint URL to https://api.coinbase.com/v2/prices/BTC-USD/spot, which returns the current Bitcoin price in USD.
+- We open a GET request to the API endpoint using xhr.open('GET', apiUrl).
+- We set the response type to JSON using xhr.responseType = 'json' to indicate that we expect the response to be in JSON format.
+- We define an onload function to handle the response from the API when the request is completed.
+- Inside the onload function, we check if the request was successful by comparing xhr.status to 200 (which indicates a successful request).
+- If the request is successful, we extract the current Bitcoin price from the response data using response.data.amount.
+- We display the Bitcoin price on the webpage by setting the textContent of the element with the ID 'price'.
+- Finally, we send the request to the API using xhr.send().
+- We use setInterval(fetchBitcoinPrice, 3000) to call the fetchBitcoinPrice function every 3 seconds to continuously update the displayed Bitcoin price.
